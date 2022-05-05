@@ -1,0 +1,31 @@
+<div class = "row h2 my-4 text-center">
+    <p>Список пользователей</p>
+</div>
+<div class="row">
+    <div class="col text-start">
+        <button (click)="navigateAdd()" class="btn btn-primary mb-1">Зарегистрировать пользователя</button>
+    </div>
+    <div class="col-3 text-end">
+        <input type="text" class="form-control" placeholder="Поиск" (keyup)="applyFilter($event)">
+    </div>
+</div>
+<table class = "table table-striped table-bordered table-hover align-middle text-center">
+    <thead>
+        <tr>
+            <th><a>Логин</a></th>
+            <th><a>ФИО</a></th>
+            <th><a>Должность</a></th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let user of users" >
+            <td> {{ user.username }} </td>
+            <td> {{ user.fio }} </td>
+            <td> {{ user.departmentByDepartmentId.departmentNameLocal }} </td>
+            <td>
+                <button (click) = "navigateUpdate(user.userId)" class = "btn btn-primary">Изменить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

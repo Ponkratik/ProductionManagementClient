@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3 text-center p-4 mt-4">
+        <div class="row">
+            <h3 class="text-center">Добавить пользователя</h3>
+            <hr />
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit($event)" #f="ngForm" novalidate>
+                <div class="form-group text-start">
+                    <label class="ms-1 my-1" for="username">Логин</label>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
+                        minlength="3" maxlength="60" #username="ngModel" />
+                    <div class="alert-danger text-center" *ngIf="username.errors && f.submitted">
+                        <div *ngIf="username.errors['required']">Имя необходимо</div>
+                        <div *ngIf="username.errors['minlength']">
+                            Имя пользователя должно быть длиной более 3 символов
+                        </div>
+                        <div *ngIf="username.errors['maxlength']">
+                            Имя пользователя должно быть длиной менее 60 символов
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-start">
+                    <label for="password">Пароль</label>
+                    <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
+                        minlength="6" maxlength="255" #password="ngModel" />
+                    <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                        <div *ngIf="password.errors['required']">Пароль необходим</div>
+                        <div *ngIf="password.errors['minlength']">
+                            Пароль должен быть длиной не менее 6 символов
+                        </div>
+                        <div *ngIf="password.errors['maxlength']">
+                            Пароль должен быть длиной не более 255 сиволов
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-start">
+                    <label class="ms-1 my-1" for="fio">ФИО</label>
+                    <input type="text" class="form-control" name="fio" [(ngModel)]="form.fio" required
+                        minlength="3" maxlength="255" #fio="ngModel" />
+                    <div class="alert-danger text-center" *ngIf="fio.errors && f.submitted">
+                        <div *ngIf="fio.errors['required']">ФИО необходимо</div>
+                        <div *ngIf="fio.errors['minlength']">
+                            ФИО должно быть длиной более 3 символов
+                        </div>
+                        <div *ngIf="fio.errors['maxlength']">
+                            ФИО должно быть длиной менее 255 символов
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-start">
+                    <label class="ms-1 my-1" for="departmentByDepartmentId">Отдел</label>
+                    <input class="form-control" list="departmentDataList" id="departmentByDepartmentId"
+                        placeholder="Введите для поиска...">
+                    <datalist id="departmentByDepartmentId">
+                        <option *ngFor = "let department of departments" [value]="department.departmentNameLocal">{{ department.departmentNameLocal }}</option>
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block mt-4 text-center">Зарегистрировать</button>
+                </div>
+                <div class="alert alert-warning my-2" *ngIf="f.submitted && !isSuccessful">
+                    Ошибка:<br />{{ errorMessage }}
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <p class="text-center fw-light my-2 text-decoration-underline">
+            <a (click)="navigateToList()">Вернуться</a>
+        </p>
+    </div>
+</div>

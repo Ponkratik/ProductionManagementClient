@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3 text-center p-4 mt-4">
+        <div class="row">
+            <h3 class="text-center">Изменить данные пользователя</h3>
+            <hr />
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit($event)" #f="ngForm" novalidate>
+                <div class="form-group text-start">
+                    <label class="ms-1 my-1" for="username">Логин</label>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
+                        minlength="3" maxlength="60" #username="ngModel" />
+                    <div class="alert-danger text-center" *ngIf="username.errors && f.submitted">
+                        <div *ngIf="username.errors['required']">Имя необходимо</div>
+                        <div *ngIf="username.errors['minlength']">
+                            Имя пользователя должно быть длиной более 3 символов
+                        </div>
+                        <div *ngIf="username.errors['maxlength']">
+                            Имя пользователя должно быть длиной менее 60 символов
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-start">
+                    <label class="ms-1 my-1" for="fio">ФИО</label>
+                    <input type="text" class="form-control" name="fio" [(ngModel)]="form.fio" required
+                        minlength="3" maxlength="255" #fio="ngModel" />
+                    <div class="alert-danger text-center" *ngIf="fio.errors && f.submitted">
+                        <div *ngIf="fio.errors['required']">ФИО необходимо</div>
+                        <div *ngIf="fio.errors['minlength']">
+                            ФИО должно быть длиной более 3 символов
+                        </div>
+                        <div *ngIf="fio.errors['maxlength']">
+                            ФИО должно быть длиной менее 255 символов
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-start">
+                    <label class="ms-1 my-1" for="departmentByDepartmentId">Отдел</label>
+                    <input class="form-control" list="departmentDataList" id="departmentByDepartmentId"
+                        placeholder="Введите для поиска..." name="departmentStr" [(ngModel)]="departmentStr">
+                    <datalist id="departmentByDepartmentId">
+                        <option *ngFor = "let department of departments" [value]="department.departmentNameLocal">{{ department.departmentNameLocal }}</option>
+                    </datalist>
+                </div>
+                <div class="row form-group">
+                    <div class="col text-center">
+                        <button class="btn btn-primary btn-block mt-4 text-center">Сохранить</button>
+                    </div>
+                    <div class="col text-center">
+                        <button class="btn btn-primary btn-block btn-danger mt-4 text-center" (click)="delete()">Удалить</button>
+                    </div>
+                </div>
+                <div class="alert alert-warning my-2" *ngIf="f.submitted && !isSuccessful">
+                    Ошибка:<br />{{ errorMessage }}
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <p class="text-center fw-light my-2 text-decoration-underline">
+            <a (click)="navigateToList()">Вернуться</a>
+        </p>
+    </div>
+</div>
