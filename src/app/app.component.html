@@ -1,1 +1,71 @@
-<router-outlet></router-outlet>
+<div id="app">
+    <nav class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
+                    class="border rounded-3 p-1 text-decoration-none"><i class="bi bi-list bi-lg py-2 p-1"></i></a>
+                <a href="#" class="navbar-brand text-white">Производственный отдел</a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a href="/home" class="nav-link px-2" routerLink="home">Главная</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn && isSysadmin">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a href="/usermanagement" class="nav-link px-2" routerLink="usermanagement">Пользователи</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <div class="text-light">
+                            {{ date | async | date:'HH:mm:ss dd.MM.yyyy' }}
+                        </div>
+                    </li>
+                </ul>
+                <div class="text-end">
+                    <ul class="navbar-nav ms-auto" *ngIf="!isLoggedIn">
+                        <li class="nav-item">
+                            <a href="/signin" class="nav-link" routerLink="signin">Вход</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto" *ngIf="isLoggedIn">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Аккаунт
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdownMenuLink">
+                                <li><a href="/profile" class="dropdown-item text-black" routerLink="profile">{{
+                                        storedUser.username }}</a></li>
+                                <li><a href class="dropdown-item text-secondary" (click)="logout()">Выход</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto px-0">
+                    <div id="sidebar" class="collapse collapse-horizontal show border-end">
+                        <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+                            <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate"
+                                data-bs-parent="#sidebar"><i class="bi bi-bootstrap"></i> <span>Item</span> </a>
+                            <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate"
+                                data-bs-parent="#sidebar"><i class="bi bi-film"></i> <span>Item</span></a>
+                            <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate"
+                                data-bs-parent="#sidebar"><i class="bi bi-heart"></i> <span>Item</span></a>
+                            <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate"
+                                data-bs-parent="#sidebar"><i class="bi bi-bricks"></i> <span>Item</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col ps-md-2 pt-2">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
