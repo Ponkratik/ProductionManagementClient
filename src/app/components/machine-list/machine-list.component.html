@@ -1,0 +1,33 @@
+<div class = "row h2 my-4 text-center">
+    <p>Список станков</p>
+</div>
+<div class="row">
+    <div class="col text-start">
+        <button (click)="navigateAdd()" class="btn btn-primary mb-1">Добавить станок</button>
+    </div>
+    <div class="col-3 text-end">
+        <input type="text" class="form-control" placeholder="Поиск" (keyup)="applyFilter($event)">
+    </div>
+</div>
+<table class = "table table-striped table-bordered table-hover align-middle text-center">
+    <thead>
+        <tr>
+            <th><a>ID</a></th>
+            <th><a>Название</a></th>
+            <th><a>Мощность</a></th>
+            <th><a>Отдел</a></th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let machine of machines" >
+            <td> {{ machine.machineId }} </td>
+            <td> {{ machine.machineName }} </td>
+            <td> {{ machine.capacity | date:"HH.mm.ss":"GMT+3" }} </td>
+            <td> {{ machine.departmentByDepartmentId.departmentNameLocal }} </td>
+            <td>
+                <button (click) = "navigateUpdate(machine.machineId)" class = "btn btn-primary">Изменить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
