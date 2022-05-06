@@ -12,6 +12,7 @@
 <table class = "table table-striped table-bordered table-hover align-middle text-center">
     <thead>
         <tr>
+            <th><a>ID</a></th>
             <th><a>Логин</a></th>
             <th><a>ФИО</a></th>
             <th><a>Должность</a></th>
@@ -20,6 +21,7 @@
     </thead>
     <tbody>
         <tr *ngFor = "let user of users" >
+            <td> {{ user.userId }} </td>
             <td> {{ user.username }} </td>
             <td> {{ user.fio }} </td>
             <td> {{ user.departmentByDepartmentId.departmentNameLocal }} </td>
