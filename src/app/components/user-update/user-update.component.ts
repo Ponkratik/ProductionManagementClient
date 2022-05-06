@@ -43,13 +43,8 @@ export class UserUpdateComponent implements OnInit {
     this.userService.getById(this.id).subscribe({
       next: data => {
         this.form = data;
-        this.departmentStr = this.form.departmentByDepartmentId.departmentNameLocal;
-      }
-    });
-
-    this.userService.getById(this.id).subscribe({
-      next: data => {
         this.loggedUser = data;
+        this.departmentStr = this.form.departmentByDepartmentId.departmentNameLocal;
       }
     });
   }
