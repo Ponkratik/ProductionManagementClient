@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ComponentAddComponent } from './components/component-add/component-add.component';
+import { ComponentListComponent } from './components/component-list/component-list.component';
+import { ComponentUpdateComponent } from './components/component-update/component-update.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { MachineAddComponent } from './components/machine-add/machine-add.component';
+import { MachineListComponent } from './components/machine-list/machine-list.component';
+import { MachineUpdateComponent } from './components/machine-update/machine-update.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
@@ -12,6 +18,12 @@ const routes: Routes = [
   { path: 'usermanagement', component: UserListComponent },
   { path: 'usermanagement/add', component: UserAddComponent },
   { path: 'usermanagement/update/:id', component: UserUpdateComponent},
+  { path: 'componentmanagement', component: ComponentListComponent },
+  { path: 'componentmanagement/add', component: ComponentAddComponent },
+  { path: 'componentmanagement/update/:id', component: ComponentUpdateComponent},
+  { path: 'machinemanagement', component: MachineListComponent },
+  { path: 'machinemanagement/add', component: MachineAddComponent },
+  { path: 'machinemanagement/update/:id', component: MachineUpdateComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

@@ -11,6 +11,12 @@ import { UserUpdateComponent } from './components/user-update/user-update.compon
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { ComponentListComponent } from './components/component-list/component-list.component';
+import { ComponentAddComponent } from './components/component-add/component-add.component';
+import { ComponentUpdateComponent } from './components/component-update/component-update.component';
+import { MachineListComponent } from './components/machine-list/machine-list.component';
+import { MachineAddComponent } from './components/machine-add/machine-add.component';
+import { MachineUpdateComponent } from './components/machine-update/machine-update.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,13 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
     LoginComponent,
     UserListComponent,
     UserAddComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    ComponentListComponent,
+    ComponentAddComponent,
+    ComponentUpdateComponent,
+    MachineListComponent,
+    MachineAddComponent,
+    MachineUpdateComponent
   ],
   imports: [
     BrowserModule,

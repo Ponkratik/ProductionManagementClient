@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3 text-center p-4 mt-4">
+        <div class="row">
+            <h3 class="text-center">Изменить компонент</h3>
+            <hr />
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit($event)" #f="ngForm" novalidate>
+                <div class="form-group text-start">
+                    <label class="ms-1 my-1" for="name">Название</label>
+                    <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required
+                        minlength="1" maxlength="255" #name="ngModel" />
+                    <div class="alert-danger text-center" *ngIf="name.errors && f.submitted">
+                        <div *ngIf="name.errors['required']">Название необходимо</div>
+                        <div *ngIf="name.errors['minlength']">
+                            Название должно быть длиной более 1 символа
+                        </div>
+                        <div *ngIf="name.errors['maxlength']">
+                            Название должно быть длиной менее 255 символов
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-start">
+                    <label class="ms-1 my-1" for="unit">Ед.изм.</label>
+                    <input type="text" class="form-control" name="unit" [(ngModel)]="form.unit"
+                         maxlength="255" #unit="ngModel" />
+                    <div class="alert-danger text-center" *ngIf="unit.errors && f.submitted">
+                        <div *ngIf="unit.errors['maxlength']">
+                            Единица измерения должна быть длиной менее 255 символов
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col text-center">
+                        <button class="btn btn-primary btn-block mt-4 text-center">Сохранить</button>
+                    </div>
+                    <div class="col text-center">
+                        <button class="btn btn-primary btn-block btn-danger mt-4 text-center" (click)="delete()">Удалить</button>
+                    </div>
+                </div>
+                <div class="alert alert-warning my-2" *ngIf="f.submitted && !isSuccessful">
+                    Ошибка:<br />{{ errorMessage }}
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <p class="text-center fw-light my-2 text-decoration-underline">
+            <a (click)="navigateToList()">Вернуться</a>
+        </p>
+    </div>
+</div>

@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      this.storedUser.departmentByDepartmentId = user.departmentByDepartmentId[0];
+      this.storedUser.departmentByDepartmentId = user.departmentByDepartmentId;
       this.storedUser.username = user.username;
       this.storedUser.fio = user.fio;
 
