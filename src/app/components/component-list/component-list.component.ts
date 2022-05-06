@@ -40,7 +40,7 @@ export class ComponentListComponent implements OnInit {
     this.router.navigate(['componentmanagement/update', id])
   }
 
-  applySortTest(event: any) {
+  applySort(event: any) {
     //получение всех свойств
     let properties = Object.getOwnPropertyNames(this.components![0]);
     //ключ сортировки
