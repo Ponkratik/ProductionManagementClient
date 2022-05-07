@@ -22,7 +22,7 @@
                     <label class="ms-1 my-1" for="capacity">Мощность</label>
                     <div class="row">
                         <div class="col">
-                            <input type="time" class="form-control" name="capacity" [(ngModel)]="form.capacity"
+                            <input type="time" class="form-control" name="capacity" [(ngModel)]="capacityStr"
                             maxlength="8" #capacity="ngModel"/>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                     </datalist>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-block mt-4 text-center">Зарегистрировать</button>
+                    <button class="btn btn-primary btn-block mt-4 text-center">Добавить</button>
                 </div>
                 <div class="alert alert-warning my-2" *ngIf="f.submitted && !isSuccessful">
                     Ошибка:<br />{{ errorMessage }}

@@ -25,6 +25,7 @@ export class MachineListComponent implements OnInit {
       next: data => {
         this.allMachines = data;
         this.machines = this.allMachines;
+        console.log(this.allMachines);
       },
       error: error => {
 

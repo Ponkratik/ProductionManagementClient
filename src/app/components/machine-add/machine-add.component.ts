@@ -16,6 +16,8 @@ export class MachineAddComponent implements OnInit {
     departmentByDepartmentId: null
   };
 
+  capacityStr: string = '';
+
   departments?: Department[];
   
   isSuccessful = false;
@@ -33,6 +35,7 @@ export class MachineAddComponent implements OnInit {
 
   onSubmit(event: any) {
     this.form.departmentByDepartmentId = this.departments!.filter((department: Department) => department.departmentNameLocal.includes(event.target.departmentByDepartmentId.value))[0];
+    this.form.capacity = `1970-01-01T${this.capacityStr}:00.000+03:00`;
     console.log(this.form);
     this.save();
   }

@@ -23,7 +23,7 @@
         <tr *ngFor = "let machine of machines" >
             <td> {{ machine.machineId }} </td>
             <td> {{ machine.machineName }} </td>
-            <td> {{ machine.capacity | date:"HH.mm.ss":"GMT+3" }} </td>
+            <td> {{ machine.capacity | date:"HH:mm:ss":"GMT+3" }} </td>
             <td> {{ machine.departmentByDepartmentId.departmentNameLocal }} </td>
             <td>
                 <button (click) = "navigateUpdate(machine.machineId)" class = "btn btn-primary">Изменить</button>

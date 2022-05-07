@@ -16,6 +16,7 @@ export class MachineUpdateComponent implements OnInit {
     departmentByDepartmentId: null
   };
 
+  capacityStr: string = '';
   departmentStr: string = '';
   departments?: Department[];
   
@@ -38,6 +39,7 @@ export class MachineUpdateComponent implements OnInit {
       next: data => {
         this.form = data;
         this.departmentStr = this.form.departmentByDepartmentId.departmentNameLocal;
+        this.capacityStr = this.form.capacity.substring(11, 16);
       }
     });
   }
