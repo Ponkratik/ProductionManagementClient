@@ -1,0 +1,35 @@
+<div class = "row h2 my-4 text-center">
+    <p>Список станков</p>
+</div>
+<div class="row">
+    <div class="col text-start">
+        <button (click)="navigateAdd()" class="btn btn-primary mb-1">Импорт заказов</button>
+    </div>
+    <div class="col-3 text-end">
+        <input type="text" class="form-control" placeholder="Поиск" (keyup)="applyFilter($event)">
+    </div>
+</div>
+<table class = "table table-striped table-bordered table-hover align-middle text-center">
+    <thead>
+        <tr>
+            <th><a id="orderId" (click)="applySort($event)">ID</a></th>
+            <th><a id="productByProductId.productId" (click)="applySort($event)">Продукт</a></th>
+            <th><a id="quantity" (click)="applySort($event)">Кол-во</a></th>
+            <th><a id="orderDate" (click)="applySort($event)">Дата заказа</a></th>
+            <th><a id="batchId" (click)="applySort($event)">Партия</a></th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let order of orders" >
+            <td> {{ order.orderId }} </td>
+            <td> {{ order.productByProductId.productId + ' ' + order.productByProductId.productName }} </td>
+            <td> {{ order.quantity }} </td>
+            <td> {{ order.orderDate | date:"dd.MM.yyyy HH:mm:ss":"GMT+3" }} </td>
+            <td> {{ order.batchId }} </td>
+            <td>
+                <button (click) = "navigateUpdate(order.orderId)" class = "btn btn-primary">Изменить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

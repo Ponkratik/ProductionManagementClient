@@ -17,6 +17,12 @@ import { ComponentUpdateComponent } from './components/component-update/componen
 import { MachineListComponent } from './components/machine-list/machine-list.component';
 import { MachineAddComponent } from './components/machine-add/machine-add.component';
 import { MachineUpdateComponent } from './components/machine-update/machine-update.component';
+import { ProductAddComponent } from './components/product-add/product-add.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductUpdateComponent } from './components/product-update/product-update.component';
+import { RouteListComponent } from './components/route-list/route-list.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
+import { OrderAddComponent } from './components/order-add/order-add.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,13 @@ import { MachineUpdateComponent } from './components/machine-update/machine-upda
     ComponentUpdateComponent,
     MachineListComponent,
     MachineAddComponent,
-    MachineUpdateComponent
+    MachineUpdateComponent,
+    ProductAddComponent,
+    ProductListComponent,
+    ProductUpdateComponent,
+    RouteListComponent,
+    OrderListComponent,
+    OrderAddComponent
   ],
   imports: [
     BrowserModule,
