@@ -17,7 +17,6 @@
             <th><a id="quantity" (click)="applySort($event)">Кол-во</a></th>
             <th><a id="orderDate" (click)="applySort($event)">Дата заказа</a></th>
             <th><a id="batchId" (click)="applySort($event)">Партия</a></th>
-            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -27,9 +26,6 @@
             <td> {{ order.quantity }} </td>
             <td> {{ order.orderDate | date:"dd.MM.yyyy HH:mm:ss":"GMT+3" }} </td>
             <td> {{ order.batchId }} </td>
-            <td>
-                <button (click) = "navigateUpdate(order.orderId)" class = "btn btn-primary">Изменить</button>
-            </td>
         </tr>
     </tbody>
 </table>
