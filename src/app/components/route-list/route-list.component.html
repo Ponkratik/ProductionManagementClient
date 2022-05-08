@@ -1,0 +1,179 @@
+<div class = "row h2 my-4 text-center">
+    <p>Редактор маршрутов</p>
+</div>
+<div class = "row h2 my-4 text-center">
+    <p>Продукт: {{ id }}</p>
+</div>
+<div class="row">
+    <div class="col text-start">
+        <button (click)="addRoute()" class="btn btn-primary mb-1">Добавить</button>
+    </div>
+</div>
+<table class = "table table-striped table-bordered table-hover align-middle text-center">
+    <thead>
+        <tr>
+            <th><a>ID(глобальный)</a></th>
+            <th><a>Название</a></th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let route of routes">
+            <ng-template [ngTemplateOutlet]="loadTemplateRoute(route)" 
+                        [ngTemplateOutletContext]="{ $implicit: route }">
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="sr">
+    <div class = "row h4 mt-4 mb-1 text-center">
+        <p>Маршрут: {{ selectedRoute.routeId + ' ' + selectedRoute.routeName }}</p>
+    </div>
+    <div class="row">
+        <div class="col text-start">
+            <button (click)="addOperation()" class="btn btn-primary mb-1">Добавить</button>
+        </div>
+    </div>
+    <table class = "table table-striped table-bordered table-hover align-middle text-center">
+        <thead>
+            <tr>
+                <th><a>ID(глобальный)</a></th>
+                <th><a>Пор.№</a></th>
+                <th><a>Название</a></th>
+                <th><a>Время выполнения</a></th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let operation of operations">
+                <ng-template [ngTemplateOutlet]="loadTemplateOperation(operation)" 
+                            [ngTemplateOutletContext]="{ $implicit: operation }">
+                </ng-template>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="so">
+    <div class = "row h4 mt-4 mb-1 text-center">
+        <p>Компоненты: {{ selectedOperation.operationName }}</p>
+    </div>
+    <div class="row">
+        <div class="col text-start">
+            <button (click)="addComponent()" class="btn btn-primary mb-1">Добавить</button>
+        </div>
+    </div>
+    <table class = "table table-striped table-bordered table-hover align-middle text-center">
+        <thead>
+            <tr>
+                <th><a>ID(глобальный)</a></th>
+                <th><a>Название</a></th>
+                <th><a>Кол-во</a></th>
+                <th><a>Ед.изм.</a></th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let component of components">
+                <ng-template [ngTemplateOutlet]="loadTemplateComponent(component)" 
+                            [ngTemplateOutletContext]="{ $implicit: component }">
+                </ng-template>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<!--шаблон для просмотра маршрутов-->
+<ng-template #readOnlyTemplateRoute let-route>
+    <td> {{ route.routeId }} </td>
+    <td> {{ route.routeName }} </td>
+    <td>
+        <button (click)="updateRoute(route)" class = "btn btn-primary">Изменить</button>
+        <button (click)="deleteRoute(route)" class = "btn btn-danger">Удалить</button>
+        <button (click)="selectRoute(route)" class = "btn btn-primary">></button>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования маршрутов-->
+<ng-template #editTemplateRoute>
+    <td>
+        <input type="number" [(ngModel)]="routeToEdit.routeId" readonly disabled class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="routeToEdit.routeName" class="form-control" />
+    </td>
+    <td>
+        <button (click)="saveRoute()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelRoute()" class = "btn btn-secondary">Отмена</button>
+    </td>
+</ng-template>
+
+
+<!--шаблон для просмотра операций-->
+<ng-template #readOnlyTemplateOperation let-operation>
+    <td>{{ operation.operationId }}</td>
+    <td>{{ operation.sequenceNumber }}</td>
+    <td>{{ operation.operationName }}</td>
+    <td>{{ operation.runtime | date:"HH:mm":"GMT+3" }}</td>
+    <td>
+        <button (click)="updateOperation(operation)" class = "btn btn-primary">Изменить</button>
+        <button (click)="deleteOperation(operation)" class = "btn btn-danger">Удалить</button>
+        <button (click)="selectOperation(operation)" class="btn btn-primary">></button>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования операций-->
+<ng-template #editTemplateOperation>
+    <td>
+        <input type="number" [(ngModel)]="operationToEdit.operationId" readonly disabled class="form-control" />
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="operationToEdit.sequenceNumber" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="operationToEdit.operationName" class="form-control" />
+    </td>
+    <td>
+        <input type="time" [(ngModel)]="runtimeStr" class="form-control" />
+    </td>
+    <td>
+        <button (click)="saveOperation()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelOperation()" class = "btn btn-secondary">Отмена</button>
+    </td>
+</ng-template>
+
+
+
+<!--шаблон для просмотра компонентов-->
+<ng-template #readOnlyTemplateComponent let-component>
+    <td>{{ component.componentByComponentId.componentId }}</td>
+    <td>{{ component.componentByComponentId.name }}</td>
+    <td>{{ component.quantity }}</td>
+    <td>{{ component.componentByComponentId.unit }}</td>
+    <td>
+        <button (click)="deleteComponent(component)" class = "btn btn-danger">Удалить</button>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования компонентов-->
+<ng-template #editTemplateComponent>
+    <td>
+        <input type="number" [(ngModel)]="componentToEdit.componentByComponentId.componentId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="componentToEdit.componentByComponentId.name" disabled readonly class="form-control" />
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="componentToEdit.quantity" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="componentToEdit.componentByComponentId.unit" disabled readonly class="form-control" />
+    </td>
+    <td>
+        <button (click)="saveComponent()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelComponent()" class = "btn btn-secondary">Отмена</button>
+    </td>
+</ng-template>

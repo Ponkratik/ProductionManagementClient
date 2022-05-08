@@ -13,6 +13,7 @@ import { OrderListComponent } from './components/order-list/order-list.component
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
+import { RouteListComponent } from './components/route-list/route-list.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'productmanagement', component: ProductListComponent },
   { path: 'productmanagement/add', component: ProductAddComponent },
   { path: 'productmanagement/update/:id', component: ProductUpdateComponent },
+  { path: 'routemanagement/:id', component: RouteListComponent },
   { path: 'ordermanagement', component: OrderListComponent },
   { path: 'ordermanagement/add', component: OrderAddComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }

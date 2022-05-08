@@ -40,6 +40,10 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['productmanagement/update', id])
   }
 
+  navigateRoutes(id: number) {
+    this.router.navigate(['routemanagement/', id])
+  }
+
   applySort(event: any) {
     //получение всех свойств
     let properties = Object.getOwnPropertyNames(this.products![0]);
