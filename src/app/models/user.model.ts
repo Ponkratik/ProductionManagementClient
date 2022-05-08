@@ -6,4 +6,8 @@ export class User {
     password?: string;
     fio!: string;
     departmentByDepartmentId!: Department;
+
+    constructor() {
+        this.departmentByDepartmentId = new Department();
+    }
 }
