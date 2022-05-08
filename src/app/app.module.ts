@@ -23,6 +23,8 @@ import { ProductUpdateComponent } from './components/product-update/product-upda
 import { RouteListComponent } from './components/route-list/route-list.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { OrderAddComponent } from './components/order-add/order-add.component';
+import { PlanListComponent } from './components/plan-list/plan-list.component';
+import { PlanWorkerListComponent } from './components/plan-worker-list/plan-worker-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { OrderAddComponent } from './components/order-add/order-add.component';
     ProductUpdateComponent,
     RouteListComponent,
     OrderListComponent,
-    OrderAddComponent
+    OrderAddComponent,
+    PlanListComponent,
+    PlanWorkerListComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,8 @@ import { MachineListComponent } from './components/machine-list/machine-list.com
 import { MachineUpdateComponent } from './components/machine-update/machine-update.component';
 import { OrderAddComponent } from './components/order-add/order-add.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
+import { PlanListComponent } from './components/plan-list/plan-list.component';
+import { PlanWorkerListComponent } from './components/plan-worker-list/plan-worker-list.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
@@ -36,6 +38,8 @@ const routes: Routes = [
   { path: 'routemanagement/:id', component: RouteListComponent },
   { path: 'ordermanagement', component: OrderListComponent },
   { path: 'ordermanagement/add', component: OrderAddComponent },
+  { path: 'planmanagement', component: PlanListComponent },
+  { path: 'myplans', component: PlanWorkerListComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

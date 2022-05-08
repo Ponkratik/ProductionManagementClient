@@ -2,7 +2,7 @@
     <nav class="p-3 bg-dark text-white">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
+                <a *ngIf="isLoggedIn" href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
                     class="border rounded-3 p-1 text-decoration-none"><i class="bi bi-list bi-lg py-2 p-1"></i></a>
                 <a href="#" class="navbar-brand text-white">Производственный отдел</a>
                 <ul class="navbar-nav mr-auto">
@@ -55,6 +55,10 @@
                                 data-bs-parent="#sidebar" routerLink="productmanagement" *ngIf="isSysadmin">Продукты</a>
                                 <a href="/ordermanagement" class="list-group-item border-end-0 d-inline-block text-truncate"
                                 data-bs-parent="#sidebar" routerLink="ordermanagement" *ngIf="isSysadmin">Заказы</a>
+                                <a href="/planmanagement" class="list-group-item border-end-0 d-inline-block text-truncate"
+                                data-bs-parent="#sidebar" routerLink="planmanagement" *ngIf="isSysadmin">План</a>
+                                <a href="/myplans" class="list-group-item border-end-0 d-inline-block text-truncate"
+                                data-bs-parent="#sidebar" routerLink="myplans" *ngIf="isSysadmin">Мой план</a>
                         </div>
                     </div>
                 </div>

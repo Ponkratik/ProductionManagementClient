@@ -1,0 +1,138 @@
+<div class = "row h2 my-4 text-center">
+    <p>Производственный план</p>
+</div>
+<div class="row">
+    <div class="col text-start">
+        <button (click)="addPlan()" class="btn btn-primary mb-1">Добавить</button>
+    </div>
+</div>
+<table class = "table table-striped table-bordered table-hover align-middle text-center">
+    <thead>
+        <tr>
+            <th><a>ID(глобальный)</a></th>
+            <th><a>Заказ</a></th>
+            <th><a>Продукт</a></th>
+            <th><a>Операция</a></th>
+            <th><a>Оборудование(ID)</a></th>
+            <th><a>Дата</a></th>
+            <th><a>Статус</a></th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let plan of plans">
+            <ng-template [ngTemplateOutlet]="loadTemplatePlan(plan)" 
+                        [ngTemplateOutletContext]="{ $implicit: plan }">
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="sp">
+    <div class = "row h4 mt-4 mb-1 text-center">
+        <p>Ответственные: {{ selectedPlan.planId }}</p>
+    </div>
+    <div class="row">
+        <div class="col text-start">
+            <button (click)="addUser()" class="btn btn-primary mb-1">Добавить</button>
+        </div>
+    </div>
+    <table class = "table table-striped table-bordered table-hover align-middle text-center">
+        <thead>
+            <tr>
+                <th><a>ID(глобальный)</a></th>
+                <th><a>ФИО</a></th>
+                <th><a>Отдел</a></th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <ng-template [ngTemplateOutlet]="loadTemplateUser(user)" 
+                            [ngTemplateOutletContext]="{ $implicit: user }">
+                </ng-template>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--шаблон для просмотра планов-->
+<ng-template #readOnlyTemplatePlan let-plan>
+    <td> {{ plan.planId }} </td>
+    <td> {{ plan.orderByOrderId.orderId }} </td>
+    <td> {{ plan.orderByOrderId.productByProductId.productName }} </td>
+    <td> {{ plan.operationByOperationId.operationName }} </td>
+    <td> {{ plan.machineByMachineId.machineId }} </td>
+    <td> {{ plan.plannedDate | date:"dd.MM.yyyy HH:mm":"GMT+3" }} </td>
+    <td> {{ plan.completionStatus }} </td>
+    <td>
+        <button (click)="updatePlan(plan)" class = "btn btn-primary">Изменить</button>
+        <button (click)="deletePlan(plan)" class = "btn btn-danger">Удалить</button>
+        <button (click)="selectPlan(plan)" class = "btn btn-primary">></button>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования планов-->
+<ng-template #editTemplatePlan>
+    <td>
+        <input type="number" [(ngModel)]="planToEdit.planId" readonly disabled class="form-control" placeholder="ID"/>
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="planForm.order" class="form-control" placeholder="ID заказа"/>
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="planForm.product" readonly disabled class="form-control" placeholder="ID продукта"/>
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="planForm.operation" class="form-control" placeholder="ID операции (глобальный)"/>
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="planForm.machine" class="form-control" placeholder="ID Оборудования (глобальный)"/>
+    </td>
+    <td>
+        <input type="date" [(ngModel)]="planTime.date" class="form-control" placeholder="Дата"/>
+        <input type="time" [(ngModel)]="planTime.time" class="form-control" placeholder="Время"/>
+    </td>
+    <td>
+        <input type="text" list="completionStatusList" [(ngModel)]="planToEdit.completionStatus" class="form-control" />
+        <datalist id="completionStatusList">
+            <option>Запланировано</option>
+            <option>Начато</option>
+            <option>Завершено</option>
+        </datalist>
+    </td>
+    <td>
+        <button (click)="savePlan()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelPlan()" class = "btn btn-secondary">Отмена</button>
+    </td>
+</ng-template>
+
+
+
+<!--шаблон для просмотра пользователей-->
+<ng-template #readOnlyTemplateUser let-user>
+    <td>{{ user.userByUserId.userId }}</td>
+    <td>{{ user.userByUserId.fio }}</td>
+    <td>{{ user.userByUserId.departmentByDepartmentId.departmentNameLocal }}</td>
+    <td>
+        <button (click)="deleteUser(user)" class = "btn btn-danger">Удалить</button>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования пользователей-->
+<ng-template #editTemplateUser>
+    <td>
+        <input type="number" [(ngModel)]="userToEdit.userByUserId.userId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="userToEdit.userByUserId.fio" disabled readonly class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="userToEdit.userByUserId.departmentByDepartmentId.departmentNameLocal" disabled readonly class="form-control" />
+    </td>
+    <td>
+        <button (click)="saveUser()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelUser()" class = "btn btn-secondary">Отмена</button>
+    </td>
+</ng-template>
