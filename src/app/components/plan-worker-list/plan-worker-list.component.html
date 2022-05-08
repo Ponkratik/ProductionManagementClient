@@ -1,0 +1,74 @@
+<div class = "row h2 my-4 text-center">
+    <p>Мой план</p>
+</div>
+<table class = "table table-striped table-bordered table-hover align-middle text-center">
+    <thead>
+        <tr>
+            <th><a>ID(глобальный)</a></th>
+            <th><a>Заказ</a></th>
+            <th><a>Продукт</a></th>
+            <th><a>Операция</a></th>
+            <th><a>Оборудование(ID)</a></th>
+            <th><a>Дата</a></th>
+            <th><a>Статус</a></th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let plan of plans">
+            <ng-template [ngTemplateOutlet]="loadTemplatePlan(plan)" 
+                        [ngTemplateOutletContext]="{ $implicit: plan }">
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+
+
+<!--шаблон для просмотра планов-->
+<ng-template #readOnlyTemplatePlan let-plan>
+    <td> {{ plan.planId }} </td>
+    <td> {{ plan.orderByOrderId.orderId }} </td>
+    <td> {{ plan.orderByOrderId.productByProductId.productName }} </td>
+    <td> {{ plan.operationByOperationId.operationName }} </td>
+    <td> {{ plan.machineByMachineId.machineId }} </td>
+    <td> {{ plan.plannedDate | date:"dd.MM.yyyy HH:mm":"GMT+3" }} </td>
+    <td> {{ plan.completionStatus }} </td>
+    <td>
+        <button (click)="updatePlan(plan)" class = "btn btn-primary">Изменить</button>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования планов-->
+<ng-template #editTemplatePlan>
+    <td>
+        <input type="number" [(ngModel)]="planToEdit.planId" readonly disabled class="form-control" placeholder="ID"/>
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="planForm.order" readonly disabled class="form-control" placeholder="ID заказа"/>
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="planForm.product" readonly disabled class="form-control" placeholder="ID продукта"/>
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="planForm.operation" readonly disabled class="form-control" placeholder="ID операции (глобальный)"/>
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="planForm.machine" readonly disabled class="form-control" placeholder="ID Оборудования (глобальный)"/>
+    </td>
+    <td>
+        <input type="date" [(ngModel)]="planTime.date" class="form-control" placeholder="Дата"/>
+        <input type="time" [(ngModel)]="planTime.time" class="form-control" placeholder="Время"/>
+    </td>
+    <td>
+        <input type="text" list="completionStatusList" [(ngModel)]="planToEdit.completionStatus" class="form-control" />
+        <datalist id="completionStatusList">
+            <option>Запланировано</option>
+            <option>Начато</option>
+            <option>Завершено</option>
+        </datalist>
+    </td>
+    <td>
+        <button (click)="savePlan()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelPlan()" class = "btn btn-secondary">Отмена</button>
+    </td>
+</ng-template>
