@@ -49,16 +49,6 @@ export class RouteListComponent implements OnInit {
   componentToEdit: OperationComponent = new OperationComponent();
   isNewComponentRecord: boolean = false;
 
-  //componentToEdit: OperationComponent = new OperationComponent();
-  // isNewComponentRecord: boolean = false;
-
-  // components: any[] = [];
-  // /*componentToEdit: any = {
-  //   componentByComponentId: null,
-  //   quantity: 0
-  // };*/
-  // componentToEdit: any;
-
   constructor(private productService: ProductService, private routeService: RouteService, private operationService: OperationService, private operationComponentService: OperationComponentService, private componentService: ComponentService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
