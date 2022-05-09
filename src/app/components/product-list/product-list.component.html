@@ -26,8 +26,10 @@
             <td> {{ product.unit }} </td>
             <td> {{ product.productType }} </td>
             <td>
-                <button (click) = "navigateUpdate(product.productId)" class = "btn btn-primary">Изменить</button>
-                <button (click) = "navigateRoutes(product.productId)" class = "btn btn-primary">Маршруты</button>
+                <!-- <button (click) = "navigateUpdate(product.productId)" class = "btn btn-primary">Изменить</button>
+                <button (click) = "navigateRoutes(product.productId)" class = "btn btn-primary">Маршруты</button> -->
+                <input type="image" width="35" class="mx-1" src="assets/img/iconEdit.png" (click)="navigateUpdate(product.productId)"/>
+                <input type="image" width="35" class="mx-1" src="assets/img/iconRoute.png" (click)="navigateRoutes(product.productId)"/>
             </td>
         </tr>
     </tbody>

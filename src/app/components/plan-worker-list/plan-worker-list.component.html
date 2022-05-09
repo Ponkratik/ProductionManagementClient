@@ -34,7 +34,8 @@
     <td> {{ plan.plannedDate | date:"dd.MM.yyyy HH:mm":"GMT+3" }} </td>
     <td> {{ plan.completionStatus }} </td>
     <td>
-        <button (click)="updatePlan(plan)" class = "btn btn-primary">Изменить</button>
+        <!-- <button (click)="updatePlan(plan)" class = "btn btn-primary">Изменить</button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconEdit.png" (click)="updatePlan(plan)"/>
     </td>
 </ng-template>
    
@@ -68,7 +69,9 @@
         </datalist>
     </td>
     <td>
-        <button (click)="savePlan()" class = "btn btn-success">Сохранить</button>
-        <button (click)="cancelPlan()" class = "btn btn-secondary">Отмена</button>
+        <!-- <button (click)="savePlan()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelPlan()" class = "btn btn-secondary">Отмена</button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconSave.png" (click)="savePlan()"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconCancel.png" (click)="cancelPlan()"/>
     </td>
 </ng-template>

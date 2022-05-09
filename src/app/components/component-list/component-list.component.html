@@ -24,7 +24,8 @@
             <td> {{ comp.name }} </td>
             <td> {{ comp.unit }} </td>
             <td>
-                <button (click) = "navigateUpdate(comp.componentId)" class = "btn btn-primary">Изменить</button>
+                <!-- <button (click) = "navigateUpdate(comp.componentId)" class = "btn btn-primary">Изменить</button> -->
+                <input type="image" width="35" class="mx-1" src="assets/img/iconEdit.png" (click)="navigateUpdate(comp.componentId)"/>
             </td>
         </tr>
     </tbody>

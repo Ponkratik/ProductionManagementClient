@@ -1,0 +1,11 @@
+nav {
+    background-color: #0059C2;
+}
+
+.list-group-item {
+    background-color: #0d6efd;
+}
+
+.router-link-active .div {
+    background-color: rgb(143, 183, 212);
+}

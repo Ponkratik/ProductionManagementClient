@@ -91,9 +91,12 @@
     <td> {{ route.routeId }} </td>
     <td> {{ route.routeName }} </td>
     <td>
-        <button (click)="updateRoute(route)" class = "btn btn-primary">Изменить</button>
-        <button (click)="deleteRoute(route)" class = "btn btn-danger">Удалить</button>
-        <button (click)="selectRoute(route)" class = "btn btn-primary">></button>
+        <!-- <button  class = "btn">Изменить</button>
+        <button (click)="deleteRoute(route)" class = "btn btn-danger">Удалить</button> 
+        <button (click)="selectRoute(route)" class = "btn btn-primary">></button>-->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconEdit.png" (click)="updateRoute(route)"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconDelete.png" (click)="deleteRoute(route)"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconMore.png" (click)="selectRoute(route)"/>
     </td>
 </ng-template>
    
@@ -106,8 +109,10 @@
         <input type="text" [(ngModel)]="routeToEdit.routeName" class="form-control" />
     </td>
     <td>
-        <button (click)="saveRoute()" class = "btn btn-success">Сохранить</button>
-        <button (click)="cancelRoute()" class = "btn btn-secondary">Отмена</button>
+        <!-- <button (click)="saveRoute()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelRoute()" class = "btn btn-secondary">Отмена</button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconSave.png" (click)="saveRoute()"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconCancel.png" (click)="cancelRoute()"/>
     </td>
 </ng-template>
 
@@ -119,9 +124,12 @@
     <td>{{ operation.operationName }}</td>
     <td>{{ operation.runtime | date:"HH:mm":"GMT+3" }}</td>
     <td>
-        <button (click)="updateOperation(operation)" class = "btn btn-primary">Изменить</button>
+        <!-- <button (click)="updateOperation(operation)" class = "btn btn-primary">Изменить</button>
         <button (click)="deleteOperation(operation)" class = "btn btn-danger">Удалить</button>
-        <button (click)="selectOperation(operation)" class="btn btn-primary">></button>
+        <button (click)="selectOperation(operation)" class="btn btn-primary">></button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconEdit.png" (click)="updateOperation(operation)"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconDelete.png" (click)="deleteOperation(operation)"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconMore.png" (click)="selectOperation(operation)"/>
     </td>
 </ng-template>
    
@@ -140,8 +148,10 @@
         <input type="time" [(ngModel)]="runtimeStr" class="form-control" />
     </td>
     <td>
-        <button (click)="saveOperation()" class = "btn btn-success">Сохранить</button>
-        <button (click)="cancelOperation()" class = "btn btn-secondary">Отмена</button>
+        <!-- <button (click)="saveOperation()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelOperation()" class = "btn btn-secondary">Отмена</button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconSave.png" (click)="saveOperation()"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconCancel.png" (click)="cancelOperation()"/>
     </td>
 </ng-template>
 
@@ -154,7 +164,8 @@
     <td>{{ component.quantity }}</td>
     <td>{{ component.componentByComponentId.unit }}</td>
     <td>
-        <button (click)="deleteComponent(component)" class = "btn btn-danger">Удалить</button>
+        <!-- <button (click)="deleteComponent(component)" class = "btn btn-danger">Удалить</button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconDelete.png" (click)="deleteComponent(component)"/>
     </td>
 </ng-template>
    
@@ -173,7 +184,9 @@
         <input type="text" [(ngModel)]="componentToEdit.componentByComponentId.unit" disabled readonly class="form-control" />
     </td>
     <td>
-        <button (click)="saveComponent()" class = "btn btn-success">Сохранить</button>
-        <button (click)="cancelComponent()" class = "btn btn-secondary">Отмена</button>
+        <!-- <button (click)="saveComponent()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelComponent()" class = "btn btn-secondary">Отмена</button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconSave.png" (click)="saveComponent()"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconCancel.png" (click)="cancelComponent()"/>
     </td>
 </ng-template>

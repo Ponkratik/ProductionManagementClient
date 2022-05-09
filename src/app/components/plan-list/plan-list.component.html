@@ -67,9 +67,12 @@
     <td> {{ plan.plannedDate | date:"dd.MM.yyyy HH:mm":"GMT+3" }} </td>
     <td> {{ plan.completionStatus }} </td>
     <td>
-        <button (click)="updatePlan(plan)" class = "btn btn-primary">Изменить</button>
+        <!-- <button (click)="updatePlan(plan)" class = "btn btn-primary">Изменить</button>
         <button (click)="deletePlan(plan)" class = "btn btn-danger">Удалить</button>
-        <button (click)="selectPlan(plan)" class = "btn btn-primary">></button>
+        <button (click)="selectPlan(plan)" class = "btn btn-primary">></button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconEdit.png" (click)="updatePlan(plan)"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconDelete.png" (click)="deletePlan(plan)"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconMore.png" (click)="selectPlan(plan)"/>
     </td>
 </ng-template>
    
@@ -103,8 +106,10 @@
         </datalist>
     </td>
     <td>
-        <button (click)="savePlan()" class = "btn btn-success">Сохранить</button>
-        <button (click)="cancelPlan()" class = "btn btn-secondary">Отмена</button>
+        <!-- <button (click)="savePlan()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelPlan()" class = "btn btn-secondary">Отмена</button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconSave.png" (click)="savePlan()"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconCancel.png" (click)="cancelPlan()"/>
     </td>
 </ng-template>
 
@@ -116,7 +121,8 @@
     <td>{{ user.userByUserId.fio }}</td>
     <td>{{ user.userByUserId.departmentByDepartmentId.departmentNameLocal }}</td>
     <td>
-        <button (click)="deleteUser(user)" class = "btn btn-danger">Удалить</button>
+        <!-- <button (click)="deleteUser(user)" class = "btn btn-danger">Удалить</button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconDelete.png" (click)="deleteUser(user)"/>
     </td>
 </ng-template>
    
@@ -132,7 +138,9 @@
         <input type="text" [(ngModel)]="userToEdit.userByUserId.departmentByDepartmentId.departmentNameLocal" disabled readonly class="form-control" />
     </td>
     <td>
-        <button (click)="saveUser()" class = "btn btn-success">Сохранить</button>
-        <button (click)="cancelUser()" class = "btn btn-secondary">Отмена</button>
+        <!-- <button (click)="saveUser()" class = "btn btn-success">Сохранить</button>
+        <button (click)="cancelUser()" class = "btn btn-secondary">Отмена</button> -->
+        <input type="image" width="35" class="mx-1" src="assets/img/iconSave.png" (click)="saveUser()"/>
+        <input type="image" width="35" class="mx-1" src="assets/img/iconCancel.png" (click)="cancelUser()"/>
     </td>
 </ng-template>

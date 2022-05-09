@@ -1,72 +1,108 @@
 <div id="app">
-    <nav class="p-3 bg-dark text-white">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a *ngIf="isLoggedIn" href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
+    <nav class="p-3 text-white">
+        <div class="row">
+            <div class="col">
+                <div class="navbar-brand row">
+                    <!-- <div class="col">
+                        <a *ngIf="isLoggedIn" href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
                     class="border rounded-3 p-1 text-decoration-none"><i class="bi bi-list bi-lg py-2 p-1"></i></a>
-                <a href="#" class="navbar-brand text-white">Производственный отдел</a>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item" routerLinkActive="active">
-                        <a href="/home" class="nav-link px-2" routerLink="home">Главная</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <div class="text-light">
-                            {{ date | async | date:'HH:mm:ss dd.MM.yyyy' }}
-                        </div>
-                    </li>
-                </ul>
-                <div class="text-end">
-                    <ul class="navbar-nav ms-auto" *ngIf="!isLoggedIn">
-                        <li class="nav-item">
-                            <a href="/signin" class="nav-link" routerLink="signin">Вход</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto" *ngIf="isLoggedIn">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Аккаунт
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="profileDropdownMenuLink">
-                                <li><a href="/profile" class="dropdown-item text-black" routerLink="profile">{{
-                                        storedUser.username }}</a></li>
-                                <li><a href class="dropdown-item text-secondary" (click)="logout()">Выход</a></li>
+                    </div> -->
+                    <div class="col">
+                        <img src="assets/img/navLogo.png" alt="" height="32px">
+                        <a href="#" class="text-white text-decoration-none ms-2">Производственный отдел</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item" routerLinkActive="active">
+                                <a href="/home" class="nav-link px-2 text-white" routerLink="home">Главная</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <div class="text-light">
+                                    {{ date | async | date:'HH:mm:ss dd.MM.yyyy' }}
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="text-end">
+                            <ul class="navbar-nav ms-auto" *ngIf="!isLoggedIn">
+                                <li class="nav-item">
+                                    <a href="/signin" class="nav-link" routerLink="signin">Вход</a>
+                                </li>
                             </ul>
-                        </li>
-                    </ul>
+                            <ul class="navbar-nav ms-auto" *ngIf="isLoggedIn">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdownMenuLink"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Аккаунт
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="profileDropdownMenuLink">
+                                        <li><a href="/profile" class="dropdown-item text-black" routerLink="profile">{{
+                                                storedUser.username }}</a></li>
+                                        <li><a href class="dropdown-item text-secondary" (click)="logout()">Выход</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
-        <div class="container-fluid">
-            <div class="row flex-nowrap">
-                <div class="col-auto px-0">
-                    <div id="sidebar" class="collapse collapse-horizontal show border-end">
-                        <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
-                            <a href="/usermanagement" class="list-group-item border-end-0 d-inline-block text-truncate"
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-2 px-0">
+                <div id="sidebar" class="collapse collapse-horizontal show border-end bg-primary">
+                    <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+                        <div class="list-group-item border-end-0 d-inline-block">
+                            <img src="assets/img/workers.png" alt="" height="32px">
+                            <a href="/usermanagement" class="text-truncate text-white text-decoration-none ms-2"
                                 data-bs-parent="#sidebar" routerLink="usermanagement" *ngIf="isSysadmin">Сотрудники</a>
-                                <a href="/componentmanagement" class="list-group-item border-end-0 d-inline-block text-truncate"
+                        </div>
+                        <div class="list-group-item border-end-0 d-inline-block">
+                            <img src="assets/img/components.png" alt="" height="32px">
+                            <a href="/componentmanagement" class="text-truncate text-white text-decoration-none ms-2"
                                 data-bs-parent="#sidebar" routerLink="componentmanagement" *ngIf="isSysadmin">Компоненты</a>
-                                <a href="/machinemanagement" class="list-group-item border-end-0 d-inline-block text-truncate"
+                        </div>
+                        <div class="list-group-item border-end-0 d-inline-block">
+                            <img src="assets/img/machines.png" alt="" height="32px">
+                            <a href="/machinemanagement" class="text-truncate text-white text-decoration-none ms-2"
                                 data-bs-parent="#sidebar" routerLink="machinemanagement" *ngIf="isSysadmin">Станки</a>
-                                <a href="/productmanagement" class="list-group-item border-end-0 d-inline-block text-truncate"
+                        </div>
+                        <div class="list-group-item border-end-0 d-inline-block">
+                            <img src="assets/img/products.png" alt="" height="32px">
+                            <a href="/productmanagement" class="text-truncate text-white text-decoration-none ms-2"
                                 data-bs-parent="#sidebar" routerLink="productmanagement" *ngIf="isSysadmin">Продукты</a>
-                                <a href="/ordermanagement" class="list-group-item border-end-0 d-inline-block text-truncate"
+                        </div>
+                        <div class="list-group-item border-end-0 d-inline-block">
+                            <img src="assets/img/orders.png" alt="" height="32px">
+                            <a href="/ordermanagement" class="text-truncate text-white text-decoration-none ms-2"
                                 data-bs-parent="#sidebar" routerLink="ordermanagement" *ngIf="isSysadmin">Заказы</a>
-                                <a href="/planmanagement" class="list-group-item border-end-0 d-inline-block text-truncate"
+                        </div>
+                        <div class="list-group-item border-end-0 d-inline-block" routerLinkActive="active">
+                            <img src="assets/img/productionplan.png" alt="" height="32px">
+                            <a href="/planmanagement" class="text-truncate text-white text-decoration-none ms-2"
                                 data-bs-parent="#sidebar" routerLink="planmanagement" *ngIf="isSysadmin">План</a>
-                                <a href="/myplans" class="list-group-item border-end-0 d-inline-block text-truncate"
+                        </div>
+                        <div class="list-group-item border-end-0 d-inline-block">
+                            <img src="assets/img/myplan.png" alt="" height="32px">
+                            <a href="/myplans" class="text-truncate text-white text-decoration-none ms-2"
                                 data-bs-parent="#sidebar" routerLink="myplans" *ngIf="isSysadmin">Мой план</a>
                         </div>
                     </div>
                 </div>
-                <div class="col ps-md-2 pt-2">
-                    <div class="container">
-                        <router-outlet></router-outlet>
-                    </div>
+            </div>
+            <div class="col ps-md-2 pt-2">
+                <div class="container">
+                    <router-outlet></router-outlet>
                 </div>
             </div>
         </div>
+    </div>
 </div>

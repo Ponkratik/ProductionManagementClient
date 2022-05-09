@@ -26,7 +26,8 @@
             <td> {{ user.fio }} </td>
             <td> {{ user.departmentByDepartmentId.departmentNameLocal }} </td>
             <td>
-                <button (click) = "navigateUpdate(user.userId)" class = "btn btn-primary">Изменить</button>
+                <!-- <button (click) = "navigateUpdate(user.userId)" class = "btn btn-primary">Изменить</button> -->
+                <input type="image" width="35" class="mx-1" src="assets/img/iconEdit.png" (click)="navigateUpdate(user.userId)"/>
             </td>
         </tr>
     </tbody>
